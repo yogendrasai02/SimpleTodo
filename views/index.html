@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple todos</title>
+    
+    <!-- Fontawesome Kit ==> CHANGE it before pushing to github -->
+    <!-- PLACE YOUR FONTAWESOME KIT CODE INSIDE SRC -->
+    <script src="..." crossorigin="anonymous"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../styles/home-styles.css">
+    <link rel="stylesheet" href="../styles/global-styles.css">
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <!-- keen slider CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.6.8/keen-slider.min.css">
+    <!-- keen slider custom styles -->
+    <link rel="stylesheet" href="../styles/keen-slider-styles.css">
+</head>
+<body>
+
+    <!-- pre loader -->
+    <div class="loading d-flex flex-column justify-content-center align-items-center" id="loader">
+        <h3 class="display-4">Loading the page...</h3>
+        <div class="spinner">
+            <div class="rect1 me-3"></div>
+            <div class="rect2 me-3"></div>
+            <div class="rect3 me-3"></div>
+            <div class="rect4 me-3"></div>
+            <div class="rect5 me-3"></div>
+        </div>
+    </div>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <!-- brand-logo -->
+        <a class="navbar-brand p-0" href="#">
+            <img src="../assets/logo-1.png" alt="Simple todo logo" class="img-fluid">
+        </a>
+        <!-- burger-nav icon from Font Awesome -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+        data-bs-target="#navbarContent" aria-controls="navbarContent" 
+        aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars-staggered" class="navbar-toggler-icon"></i>
+        </button>
+        <!-- navbar links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav w-100 justify-content-evenly">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa-solid fa-house me-1 fa-lg"></i> Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="loginBtn" data-bs-toggle="modal" href="#loginModal" role="button">
+                        <i class="fa-solid fa-right-to-bracket me-1 fa-lg"></i> Login
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="signupBtn" data-bs-toggle="modal" href="#signUpModal" role="button">
+                        <i class="fa-solid fa-user-plus me-1 fa-lg"></i> Sign Up
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- login modal -->
+    <div class="modal fade" id="loginModal" aria-hidden="true" aria-labelledby="loginModalLabel" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="closeButton mb-3">
+                    <button type="button" class="btn-close border border-dark fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="d-flex align-items-center mb-3">
+                    <i class="fa-solid fa-user-lock fs-1 me-4"></i>
+                    <h4>Welcome back! Login to continue.</h4>
+                </div>
+                <form id="loginForm" autocomplete="off">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="loginEmail" name="loginEmail" placeholder="name@example.com">
+                        <label for="loginEmail">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Password">
+                        <label for="loginPassword">Password</label>
+                    </div>
+                    <div id="login-invalid-auth"></div>
+                    <input type="submit" value="Login" class="btn btn-success btn-lg">
+                </form>
+                <div class="wrapper">
+                    <div class="divider div-transparent div-dot"></div>
+                </div>
+                <div class="signUpModalTarget d-flex flex-column align-items-center mt-4">
+                    <p class="lead">Don't have an account?</p>
+                    <button class="btn btn-primary" data-bs-target="#signUpModal" data-bs-toggle="modal" data-bs-dismiss="modal">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- sign up modal -->
+    <div class="modal fade" id="signUpModal" aria-hidden="true" aria-labelledby="signUpModalLabel" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="closeButton mb-3">
+                    <button type="button" class="btn-close border border-dark fs-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="mb-3">
+                    <!-- <i class="fa-solid fa-user-lock fs-1 me-4"></i> -->
+                    <!-- <h4 class="fs-1"><span class="logoText">Simple todo</span></h4> -->
+                    <img src="../assets/logo-1.png" alt="logo">
+                    <h4 class="fs-1">Hi there!</h4>
+                    <p class="lead">All you need is an email to create an account.</p>
+                </div>
+                <form id="signUpForm" autocomplete="off">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="displayName" name="displayName" placeholder="Display Name" required>
+                        <label for="displayName">Display name</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="signUpEmail" name="signUpEmail" placeholder="name@example.com" required>
+                        <label for="signUpEmail">Email address</label>
+                        <small>You will be identified with you email, it must be unique and should not be from an existing account.</small>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="signUpPassword" name="signUpPassword" placeholder="Password" required>
+                        <label for="signUpPassword">Password</label>
+                        <small>Password must be atleast 6 characters long.</small>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="signUpConfirmPassword" name="signUpConfirmPassword" placeholder="Confirm password" required>
+                        <label for="signUpConfirmPassword">Confirm password</label>
+                    </div>
+                    <div id="signup-invalid-auth">
+
+                    </div>
+                    <input type="submit" value="Sign Up" class="btn btn-success btn-lg">
+                </form>
+                <div class="wrapper">
+                    <div class="divider div-transparent div-dot"></div>
+                </div>
+                <div class="loginModalTarget d-flex flex-column align-items-center mt-4">
+                    <p class="lead">Already have an account?</p>
+                    <button class="btn btn-primary" data-bs-target="#loginModal" data-bs-toggle="modal" data-bs-dismiss="modal">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- welcome section -->
+    <div class="container">
+        <section id="welcomeSection">
+            <!-- welcome message - typewriting effect -->
+            <div class="col-one">
+                <!-- TODO: typewriting effect -->
+                <h3 class="text-center">Manage your <span class="text-info">todos</span> with immense <span class="text-success">ease</span> using</h3>
+                <h2 class="display-2 text-center logoText">Simple todo</h2>
+                <div class="container d-flex justify-content-center mt-4">
+                    <button class="btn btn-info p-4 fs-4 mb-4" id="getStartedBtn" data-bs-toggle="modal" data-bs-target="#signUpModal">Get started <i class="fa-solid fa-circle-arrow-right fa-2xl ms-2"></i></button>
+                </div>
+            </div>
+            <!-- todo image/icon -->
+            <div class="col-two d-flex justify-content-center">    
+                <img src="../assets/to-do-list.png" id="welcomeSectionImage" class="img-fluid" alt="todo list">
+            </div>
+        </section>
+    </div>
+
+    <!-- section divider -->
+    <img src="../assets/tilt-divider-1.svg" class="sectionDivider mt-4" alt="Section divider">
+
+    <!-- features section -->
+    <div class="container">
+        <section id="featuresSection">
+            <!-- features heading -->
+            <h2 class="text-center display-3">Features</h2>
+            <div class="features mt-3">
+                <!-- individual features -->
+                <div class="feature p-3">
+                    <i class="fa-brands fa-markdown display-1"></i>
+                    <h3 class="featureText text-center">Supports markdown</h3>
+                    <p class="text-center lead">Markdown is widely used across the world. We support basic markdown for a todo's description</p>
+                </div>
+                <div class="feature p-3">
+                    <i class="fa-solid fa-user display-1"></i>
+                    <h3 class="featureText text-center">Simple signup and login</h3>
+                    <p class="text-center lead">All you need is an email. no verifications, no credit card required.</p>
+                </div>
+                <div class="feature p-3 mb-4">
+                    <i class="fa-solid fa-circle-check display-1"></i>
+                    <h3 class="featureText text-center">Easy to use</h3>
+                    <p class="text-center lead">Add, update, delete, filter, order todos. You can do them all! </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- section divider -->
+    <img src="../assets/tilt-divider-1.svg" class="sectionDivider reverse mt-4" alt="Section divider">
+
+    <!-- testimonials section -->
+    <div class="container mt-4">
+        <section id="testimonialsSection">
+            <!-- testimonials heading -->
+            <h2 class="text-center display-3">What our user's say</h2>
+            <div id="testimonialsSlider" class="keen-slider rounded-3 shadow-lg">
+                <!-- individual slide -->
+                <div class="keen-slider__slide p-4">
+                    <div class="container row">
+                        <div class="col-sm-12 col-md-6">
+                            <img src="../assets/testimonial-image-1.jfif" alt="Image1" class="img-fluid rounded-circle">
+                        </div>
+                        <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center">
+                            <h3>
+                                <span><i class="fa-solid fa-quote-left"></i></span>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, architecto
+                                <span><i class="fa-solid fa-quote-right"></i></span>
+                            </h3>
+                            <h5> - Shaun Singleton Spenser</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="keen-slider__slide p-4">
+                    <div class="container row">
+                        <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center">
+                            <h3>
+                                <span><i class="fa-solid fa-quote-left"></i></span>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, architecto
+                                <span><i class="fa-solid fa-quote-right"></i></span>
+                            </h3>
+                            <h5> - Bob Wush Chuck</h5>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <img src="../assets/testimonial-image-2.jfif" alt="Image1" class="img-fluid rounded-circle">
+                        </div>
+                    </div>
+                </div>
+                <div class="keen-slider__slide p-4">
+                    <div class="container row">
+                        <div class="col-sm-12 col-md-6">
+                            <img src="../assets/testimonial-image-3.jfif" alt="Image1" class="img-fluid rounded-circle">
+                        </div>
+                        <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center">
+                            <h3>
+                                <span><i class="fa-solid fa-quote-left"></i></span>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, architecto
+                                <span><i class="fa-solid fa-quote-right"></i></span>
+                            </h3>
+                            <h5> - Olivia Brooklyn</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="keen-slider__slide p-4">
+                    <div class="container row">
+                        <div class="col-sm-12 col-md-6 d-flex flex-column justify-content-center">
+                            <h3>
+                                <span><i class="fa-solid fa-quote-left"></i></span>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis, architecto
+                                <span><i class="fa-solid fa-quote-right"></i></span>
+                            </h3>
+                            <h5> - Maya Skylar</h5>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <img src="../assets/testimonial-image-4.jfif" alt="Image1" class="img-fluid rounded-circle">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- curve section divider -->
+    <img src="../assets/curve-divider-1.svg" alt="section divider" class="sectionDivider mt-4">
+
+    <!-- footer section -->
+    <footer>
+        <div class="row container-fluid">
+            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                <h4 class="fw-bold">Attributions</h4>
+                <ul>
+                    <li>
+                        <a href="https://www.flaticon.com/free-icons/to-do" title="to do icons" target="_blank">To do icons created by Freepik - Flaticon</a>
+                    </li>
+                    <li>Testimonial images from: <a href="https://thispersondoesnotexist.com/" target="_blank">thispersondoesnotexist</a></li>
+                    <li>
+                        Section dividers from: <a href="https://www.shapedivider.app/" target="_blank">Shape divider</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                <h4 class="text-center fw-bold">Check my profiles</h4>
+                <a href="https://github.com/yogendrasai02/Simple-todo" target="_blank">
+                    <i class="fa-brands fa-github-square display-1 text-dark"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/yogendrasai/" target="_blank">
+                    <i class="fa-brands fa-linkedin display-1 text-dark"></i>
+                </a>
+            </div>
+            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-center justify-content-center">
+                <img src="../assets/logo-1.png" alt="Simple todo logo">
+                <p>Copyright &copy; 2022 - 9999</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Goto top button -->
+    <button id="gotoTopBtn" class="rounded-circle" title="Goto top">
+        <i class="fa-solid fa-circle-arrow-up fs-1"></i>
+    </button>
+
+    <!-- keen slider CDN to minified js file -->
+    <script src="https://cdn.jsdelivr.net/npm/keen-slider@6.6.8/keen-slider.min.js"></script>
+
+    <!-- Bootstrap bundle  -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Custom scripts -->
+    <script type="module" src="../src/index.js"></script>
+
+</body>
+</html>

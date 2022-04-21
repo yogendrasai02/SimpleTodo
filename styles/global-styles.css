@@ -1,0 +1,93 @@
+/* smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+/* font family of entire page */
+body {
+    font-family: "Open Sans", "Trebuchet MS", "Lucida Sans", "Arial", sans-serif;
+}
+/* logo text formatting */
+.logoText {
+    font-family: "Open Sans", "Trebuchet MS", "Lucida Sans", "Arial", sans-serif !important;
+    color: tomato;
+    font-weight: bold;
+}
+/* div as hr divider */
+.hrDivider {
+    height: 3px;
+    background-color: black;
+}
+/* pre loader (spinner) */
+.loading {
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+}
+.spinner {
+    height: 150px;
+    text-align: center;
+    font-size: 10px;
+} 
+.spinner > div {
+    background-color: royalblue;
+    height: 100%;
+    width: 20px;
+    display: inline-block;
+    -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    animation: sk-stretchdelay 1.2s infinite ease-in-out;
+} 
+.spinner .rect2 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+} 
+.spinner .rect3 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+} 
+.spinner .rect4 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+} 
+.spinner .rect5 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+@-webkit-keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% {
+      -webkit-transform: scaleY(0.4)
+    }
+    20% {
+      -webkit-transform: scaleY(1.0)
+    }
+} 
+@keyframes sk-stretchdelay {
+    0%,
+    40%,
+    100% {
+      transform: scaleY(0.4);
+      -webkit-transform: scaleY(0.4);
+    }
+    20% {
+      transform: scaleY(1.0);
+      -webkit-transform: scaleY(1.0);
+    }
+}
+/* overwrite some default bootstrap styles */
+input:focus, input:active, [class*="btn"]:focus, [class*="btn"]:active, textarea:focus, textarea:active {
+    outline: none !important;
+    box-shadow: black 0px 1px 4px, black 0px 0px 0px 3px !important;
+    border-color: black !important;
+}
+a.nav-link:focus, a.nav-link:active {
+    border-color: transparent !important;
+}
+.btn-close {
+    border: 2px solid black !important;
+    opacity: 1 !important;
+}

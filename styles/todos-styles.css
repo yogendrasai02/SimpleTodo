@@ -1,0 +1,84 @@
+body {
+    background-color: #FAF5E4;
+}
+/* for toast message */
+#toast {
+    top: 100px;
+    z-index: 9999;
+    background-color: white;
+}
+/* navbar styles */
+.navbar {
+    background-color: white !important;
+    padding-left: 10px;
+    padding-right: 10px !important;
+}
+@media screen and (min-width: 992px) {
+    /* 992px --> lg breakpoint in Bootstrap */
+    .navbar {
+        width: 70%;
+        margin: auto;
+    }
+}
+.nav-link {
+    /* font-weight: bold; */
+    font-size: large;
+    color: black !important;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.nav-link:hover {
+    color: white !important;
+}
+
+/* todos styles */
+.card {
+    /* border: 2px solid black; */
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 10px;
+}
+@media screen and (max-width: 700px){
+    #todosContainer {
+        /* width: 100% !important; */
+        max-width: 100%;
+    }
+}
+#todos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 1000px) {
+    #todos {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 570px) {
+    #todos {
+        grid-template-columns: 1fr;
+    }
+}
+/* more options dropdown button */
+#moreOptionsMenu {
+    cursor: pointer;
+}
+#moreOptionsMenu:hover {
+    color: magenta;
+}
+/* options section */
+section#options {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 5px solid black;
+    display: grid;
+    gap: 20px;
+    align-items: start;
+    grid-template-columns: auto 1fr auto;
+}
+@media screen and (max-width: 900px) {
+    section#options {
+        grid-template-columns: 1fr;
+    }
+}
