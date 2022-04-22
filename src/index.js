@@ -11,7 +11,8 @@ window.onload = () => {
     let userDetails = localStorage.getItem('userDetails');
     if(userDetails) {
         console.log("User logged in");
-        window.location.href = "http://localhost:5500/views/todos.html";
+        // window.location.href.replace('index.html', 'todos.html');
+        window.location.href = "/todos.html";
     } else {
         console.log("User is not logged in");
     }

@@ -35,7 +35,12 @@ import {
 /* PLACE YOUR FIREBASE APP'S CONFIGURATION HERE */
 const firebaseCred = {};
 const firebaseConfig = {
-    ...firebaseCred
+    apiKey: "AIzaSyDGwXKn7wp5zUM5uPdwcXW9KceSSm6Ved8",
+    authDomain: "simple-todo-app-js.firebaseapp.com",
+    projectId: "simple-todo-app-js",
+    storageBucket: "simple-todo-app-js.appspot.com",
+    messagingSenderId: "719460524290",
+    appId: "1:719460524290:web:8a6618460ba8f90bbde21b"
 };
   
 // Initialize Firebase
@@ -52,17 +57,19 @@ let userEmail = "";
 export let todos = [];
 
 // ##REDIRECT## if the todos page is accessed, redirect to index if the user is not logged in
-if(window.location.href === "http://localhost:5500/views/todos.html") {
+if(window.location.href.includes('todos.html')) {
     if(localStorage.getItem('userDetails'))
         userEmail = JSON.parse(localStorage.getItem('userDetails')).email;
-    else
-        window.location.href = "http://localhost:5500/views/index.html";
+    else {
+        // window.location.href.replace('todos.html', 'index.html');
+        location.href = "/index.html";
+    }
 }
 
 
 // update user profile 
 // used to set display name upon signup
-const updateUserProfile = (whatToUpdate) => {
+export const updateUserProfile = (whatToUpdate) => {
     updateProfile(auth.currentUser, whatToUpdate).then(() => {
         console.log("Updated display name in firebaseAuth");
     }).catch(err => {
@@ -71,7 +78,7 @@ const updateUserProfile = (whatToUpdate) => {
 };
 
 // create an empty user doc in firebase, upon user sign up
-const createUserDocInFirestore = (email) => {
+export const createUserDocInFirestore = (email) => {
     const userDoc = {
         email: email,
         todos: []
@@ -80,7 +87,8 @@ const createUserDocInFirestore = (email) => {
         console.log("User doc created on signup:");
         console.log(res);
         // redirect to todos.html
-        window.location.href = "http://localhost:5500/views/todos.html";
+        location.href = "/todos.html";
+        // window.location.href.replace('index.html', 'todos.html');
     }).catch(err => {
         console.log(err);
     });
@@ -119,7 +127,8 @@ export const loginUser = (email, password) => {
         console.log("User login via login modal:");
         console.log(userCred);
         // redirect to todos.html upon login
-        window.location.href = "http://localhost:5500/views/todos.html";
+        location.href = "/todos.html";
+        // window.location.href.replace('index.html', 'todos.html');
     }).catch(err => {
         console.log(err.code);
         // console.log(err.message);
@@ -138,7 +147,8 @@ export const signOutUser = () => {
     signOut(auth).then(() => {
         console.log("User logged out");
         // redirect to index.html
-        window.location.href = "http://localhost:5500/views/index.html";
+        location.href = "/index.html";
+        // window.location.href.replace('todos.html', 'index.html');
     }).catch(err => {
         console.log(err);
     });
@@ -188,7 +198,7 @@ onAuthStateChanged(auth, user => {
 });
 
 let addTodoModal;
-if(window.location.href === 'http://localhost:5500/views/todos.html') {
+if(window.location.href.includes('todos.html')) {
     addTodoModal = new bootstrap.Modal(document.getElementById('addTodoModal'));
 }
 // add todos
@@ -246,7 +256,7 @@ export const convertFSTimestampToJSDate = (firestoreTimestamp) => {
     return ms;
 };
 
-if(window.location.href === "http://localhost:5500/views/todos.html") {
+if(window.location.href.includes('todos.html')) {
     // create the query to current user's user doc in firestore
     const userDocQuery = query(usersCollRef, where("email", "==", userEmail));
     // listen to any changes to that doc

@@ -8,14 +8,14 @@
     
     <!-- Fontawesome Kit ==> CHANGE it before pushing to github -->
     <!-- PLACE YOUR FONTAWESOME KIT CODE INSIDE SRC -->
-    <script src="..." crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f2cc5bee0c.js" crossorigin="anonymous"></script>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../styles/home-styles.css">
-    <link rel="stylesheet" href="../styles/global-styles.css">
+    <link rel="stylesheet" href="./styles/home-styles.css">
+    <link rel="stylesheet" href="./styles/global-styles.css">
 
     <!-- Google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
     <!-- keen slider CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@6.6.8/keen-slider.min.css">
     <!-- keen slider custom styles -->
-    <link rel="stylesheet" href="../styles/keen-slider-styles.css">
+    <link rel="stylesheet" href="./styles/keen-slider-styles.css">
 </head>
 <body>
 
@@ -86,7 +86,7 @@
                     <i class="fa-solid fa-user-lock fs-1 me-4"></i>
                     <h4>Welcome back! Login to continue.</h4>
                 </div>
-                <form id="loginForm" autocomplete="off">
+                <form id="loginForm" method="post" autocomplete="off">
                     <div class="form-floating mb-3">
                         <input type="email" class="form-control" id="loginEmail" name="loginEmail" placeholder="name@example.com">
                         <label for="loginEmail">Email address</label>
@@ -123,7 +123,7 @@
                     <h4 class="fs-1">Hi there!</h4>
                     <p class="lead">All you need is an email to create an account.</p>
                 </div>
-                <form id="signUpForm" autocomplete="off">
+                <form id="signUpForm" method="post" autocomplete="off">
                     <div class="form-floating mb-3">
                         <input type="text" class="form-control" id="displayName" name="displayName" placeholder="Display Name" required>
                         <label for="displayName">Display name</label>
@@ -326,7 +326,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <!-- Custom scripts -->
-    <script type="module" src="../src/index.js"></script>
+    <!-- <script type="module" src="./src/keen-slider-script.js"></script>
+    <script type="module" src="./src/updateUI.js"></script>
+    <script type="module" src="./src/firebase-script.js"></script>
+    <script type="module" src="./src/todos-script.js"></script> -->
+    <script type="module" src="./src/index.js"></script>
 
 </body>
 </html>

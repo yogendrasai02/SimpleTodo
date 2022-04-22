@@ -2,9 +2,9 @@
 export const todosDiv = document.querySelector("article #todos");
 
 // reference to DOM elements
-const toast = document.getElementById('toast');
-const toastIcon = document.getElementById('toastIcon');
-const toastMsg = document.getElementById('toastMsg');
+export const toast = document.getElementById('toast');
+export const toastIcon = document.getElementById('toastIcon');
+export const toastMsg = document.getElementById('toastMsg');
 
 // add a given todo item to the todos div
 export const addTodoToUI = (todo) => {
@@ -88,7 +88,7 @@ export const deleteFromUI = (todoIdInDOM) => {
 };
 
 // to hide the toast message
-const hideToast = () => {
+export const hideToast = () => {
     if(toast) {
         toast.classList.remove('show');
         toast.classList.add('hide', 'd-none');

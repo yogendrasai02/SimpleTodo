@@ -1,4 +1,3 @@
-// import from firebase-script.js
 import { 
     signOutUser,
     addTodos,
@@ -13,7 +12,7 @@ import {
     addTodoToUI
 } from './updateUI.js';
 
-// date pertaining to the user
+// data pertaining to the user
 let userDetails = null;
 let todosArr = [];
 let indOfTodo = 0;
@@ -23,7 +22,9 @@ document.onload = () => {
     let userDetails_ls = localStorage.getItem('userDetails');
     if(!userDetails_ls) {
         // console.log("TODO: not logged in");
-        window.location.href = "https://localhost:5500/views/index.html";
+        // window.location.href.replace('todos.html', 'index.html');
+        // location.href = "http://localhost:5500/index.html";
+        location.href = "/index.html";
     }
 };
 
@@ -77,7 +78,7 @@ logoutBtn.addEventListener('click', () => {
 });
 
 // to update display name in navbar
-export const updateDisplayName = () => {
+const updateDisplayName = () => {
     userDetails = JSON.parse(localStorage.getItem('userDetails'));
     displayName.textContent = userDetails.displayName;
 };
