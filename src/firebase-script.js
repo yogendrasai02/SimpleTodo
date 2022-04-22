@@ -32,8 +32,6 @@ import {
 } from './updateUI.js';
 
 // web app's Firebase configuration
-/* PLACE YOUR FIREBASE APP'S CONFIGURATION HERE */
-const firebaseCred = {};
 const firebaseConfig = {
     apiKey: "AIzaSyDGwXKn7wp5zUM5uPdwcXW9KceSSm6Ved8",
     authDomain: "simple-todo-app-js.firebaseapp.com",
@@ -61,7 +59,6 @@ if(window.location.href.includes('todos.html')) {
     if(localStorage.getItem('userDetails'))
         userEmail = JSON.parse(localStorage.getItem('userDetails')).email;
     else {
-        // window.location.href.replace('todos.html', 'index.html');
         location.href = "/index.html";
     }
 }
@@ -71,7 +68,6 @@ if(window.location.href.includes('todos.html')) {
 // used to set display name upon signup
 export const updateUserProfile = (whatToUpdate) => {
     updateProfile(auth.currentUser, whatToUpdate).then(() => {
-        console.log("Updated display name in firebaseAuth");
     }).catch(err => {
         console.log(err);
     });
@@ -84,11 +80,8 @@ export const createUserDocInFirestore = (email) => {
         todos: []
     };
     addDoc(usersCollRef, userDoc).then(res => {
-        console.log("User doc created on signup:");
-        console.log(res);
         // redirect to todos.html
         location.href = "/todos.html";
-        // window.location.href.replace('index.html', 'todos.html');
     }).catch(err => {
         console.log(err);
     });
@@ -99,8 +92,6 @@ export const signUpUser = (displayName, email, password) => {
     const invalidAuth = document.querySelector('#signup-invalid-auth');
     createUserWithEmailAndPassword(auth, email, password)
     .then(userCred => {
-        console.log("User sign up via signup modal:");
-        console.log(userCred);
         // update user's display name
         const whatToUpdate = {
             displayName: displayName
@@ -124,11 +115,8 @@ export const loginUser = (email, password) => {
     const invalidAuth = document.querySelector('#login-invalid-auth');
     signInWithEmailAndPassword(auth, email, password)
     .then(userCred => {
-        console.log("User login via login modal:");
-        console.log(userCred);
         // redirect to todos.html upon login
         location.href = "/todos.html";
-        // window.location.href.replace('index.html', 'todos.html');
     }).catch(err => {
         console.log(err.code);
         // console.log(err.message);
@@ -145,10 +133,8 @@ export const signOutUser = () => {
     // remove the userDetails obj from local storage
     localStorage.removeItem('userDetails');
     signOut(auth).then(() => {
-        console.log("User logged out");
         // redirect to index.html
         location.href = "/index.html";
-        // window.location.href.replace('todos.html', 'index.html');
     }).catch(err => {
         console.log(err);
     });
@@ -156,10 +142,7 @@ export const signOutUser = () => {
 
 // listen to auth changes
 onAuthStateChanged(auth, user => {
-    console.log("User snapshot from onAuthStateChanged:");
-    console.log(user);
     if(user && user.stsTokenManager.isExpired == false) {
-        console.log("User is logged in");
         const userObj = {
             displayName: user.displayName,
             email: user.email
@@ -170,7 +153,6 @@ onAuthStateChanged(auth, user => {
             const q = query(usersCollRef, where("email", "==", user.email));
             getDocs(q).then(res => {
                 const docs = res.docs;
-                console.log("query to get the user doc on login:");
                 userDoc = docs[0].data();
                 userDocRef = docs[0].ref;
                 todos = userDoc.todos;
@@ -181,9 +163,6 @@ onAuthStateChanged(auth, user => {
                         todos[i].dueDate = new Date(new Date(convertFSTimestampToJSDate(todos[i].dueDate)));
                     }
                 }
-                // console.log(userEmail);
-                // console.log(userDoc);
-                // console.log(userDocRef);
             }).catch(err => {
                 console.log(err);
             });
@@ -203,8 +182,6 @@ if(window.location.href.includes('todos.html')) {
 }
 // add todos
 export const addTodos = (email, todoData) => {
-    console.log("Previous todos");
-    console.log(todos);
     // update date&time to firestore's timestamp
     todoData.createdAt = Timestamp.fromDate(todoData.createdAt);
     if(todoData.hasDueDate)
@@ -213,7 +190,6 @@ export const addTodos = (email, todoData) => {
     updateDoc(userDocRef, {
         todos: newTodosArr
     }).then(res => {
-        console.log("Added new todo");
         // hide the modal after adding the todo item
         addTodoModal.hide();
         showToast("Added todo successfully", `<i class="fa-solid fa-circle-check"></i>`, "success");
@@ -241,7 +217,6 @@ export const deleteFromDBDoc = (ind) => {
     updateDoc(userDocRef, {
         todos: todos
     }).then(res => {
-        // console.log("Deleted todo from DB");
     }).catch(err => {
         console.log(err);
     });
@@ -261,7 +236,6 @@ if(window.location.href.includes('todos.html')) {
     const userDocQuery = query(usersCollRef, where("email", "==", userEmail));
     // listen to any changes to that doc
     onSnapshot(userDocQuery, snapshot => {
-        console.log("Listener on query snapshot:");
         // update userDoc, userRef, todos
         userDocRef = snapshot.docs[0];
         userDoc = userDocRef.data();

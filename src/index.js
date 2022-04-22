@@ -10,8 +10,6 @@ import {
 window.onload = () => {
     let userDetails = localStorage.getItem('userDetails');
     if(userDetails) {
-        console.log("User logged in");
-        // window.location.href.replace('index.html', 'todos.html');
         window.location.href = "/todos.html";
     } else {
         console.log("User is not logged in");
@@ -114,7 +112,6 @@ signUpForm.addEventListener('submit', event => {
     const validPwd = validatePassword(password);
     if(!validPwd) {
         // ERROR: password must be >= 6 chars long
-        console.log("Password length must be >= 6");
         if(invalidAuth) {
             invalidAuth.classList.add("d-block", "mb-3");
             invalidAuth.innerHTML = `<h3>Password must be atleast 6 characters long</h3>`;
@@ -124,7 +121,6 @@ signUpForm.addEventListener('submit', event => {
         signUpUser(displayName, email, password);
     } else {
         // ERROR: passwords in (pwd, confirmPwd) fields must be the same
-        console.log("Passwords must be the same");
         if(invalidAuth) {
             invalidAuth.classList.add("d-block", "mb-3");
             invalidAuth.innerHTML = `<h3>Password must be the same</h3>`;

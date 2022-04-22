@@ -21,9 +21,6 @@ let indOfTodo = 0;
 document.onload = () => {
     let userDetails_ls = localStorage.getItem('userDetails');
     if(!userDetails_ls) {
-        // console.log("TODO: not logged in");
-        // window.location.href.replace('todos.html', 'index.html');
-        // location.href = "http://localhost:5500/index.html";
         location.href = "/index.html";
     }
 };
@@ -165,14 +162,12 @@ sortByDropdownMenu.addEventListener('click', event => {
     if(btnName === "clear") {
         // remove all filter
         todosArr = [...todos];
-        console.log("clear");
         todosArr.forEach(todo => {
             addTodoToUI(todo);
         });
     } else {
         btnName = btnName.split('-');
         const field = btnName[0], order = btnName[1];
-        console.log(field, order);
         todosArr = [...todos];
         if(field === "title") {
             // sort based on title
@@ -202,13 +197,11 @@ sortByDropdownMenu.addEventListener('click', event => {
                 }
             });
         }
-        console.log(todosArr);
         // NOTE: You are prepending the child in addTodoToUI() to, whatever sorted order is right, give the opposite of it to the function
         if(order === "asc") {
             todosArr.reverse();
         }
         todosDiv.innerHTML = '';
-        console.log(todosArr);
         // add todos to DOM
         todosArr.forEach(todo => {
             addTodoToUI(todo);
