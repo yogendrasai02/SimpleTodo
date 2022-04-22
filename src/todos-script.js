@@ -162,6 +162,7 @@ sortByDropdownMenu.addEventListener('click', event => {
     if(btnName === "clear") {
         // remove all filter
         todosArr = [...todos];
+        todosDiv.innerHTML = '';
         todosArr.forEach(todo => {
             addTodoToUI(todo);
         });
