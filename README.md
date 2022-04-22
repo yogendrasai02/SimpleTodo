@@ -7,8 +7,8 @@
 ## Technologies uses
 [![My Skills](https://skillicons.dev/icons?i=js,firebase,html,css,bootstrap)](https://skillicons.dev)
 - JavaScript
-- Firebase Authentication and Firebase Firestore
-- HTML, CSS, Boostrap
+- Firebase Authentication and Firebase Firestore (Firebase V9)
+- HTML5, CSS3, Bootstrap 5.0
 - Deployed on Netlify
 - Code hosted on Github
 
