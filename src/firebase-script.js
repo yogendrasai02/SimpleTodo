@@ -32,13 +32,10 @@ import {
 } from './updateUI.js';
 
 // web app's Firebase configuration
+/* ADD YOUR FIREBASE CREDENTIALS(config) HERE */
+const firebaseCred = {};
 const firebaseConfig = {
-    apiKey: "AIzaSyDGwXKn7wp5zUM5uPdwcXW9KceSSm6Ved8",
-    authDomain: "simple-todo-app-js.firebaseapp.com",
-    projectId: "simple-todo-app-js",
-    storageBucket: "simple-todo-app-js.appspot.com",
-    messagingSenderId: "719460524290",
-    appId: "1:719460524290:web:8a6618460ba8f90bbde21b"
+    ...firebaseCred
 };
   
 // Initialize Firebase
