@@ -4,7 +4,7 @@
 - A todo application developed using VanillaJS and Firebase.
 - Web app Deployed on Netlify: [Simple todo](https://simple-todo-2022.netlify.app/)
 
-## Technologies uses
+## Technologies used
 [![My Skills](https://skillicons.dev/icons?i=js,firebase,html,css,bootstrap)](https://skillicons.dev)
 - JavaScript
 - Firebase Authentication and Firebase Firestore (Firebase V9)
@@ -21,7 +21,7 @@
 ## Steps to run the app in your computer
 - Clone the repository into your computer.
 - Goto `index.html` and `todos.html`, inside the `<head>` tag, there is a `<script>` tag to **Font Awesome**, add your Font Awesome kit code inside the `src` attribute in both the mentioned files.
-- Goto `firebase-script.js` and add your firebase app's configuration(credentials) in the `firebaseConfig` variable.
+- Goto `firebase-script.js` and add your **Firebase app's configuration**(credentials) in the `firebaseConfig` variable.
 - Install `live server` extension in `VSCode` and run the app by clicking on `Open with Live Server`.
 
 ## Misc
