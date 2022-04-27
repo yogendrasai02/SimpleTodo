@@ -1,7 +1,7 @@
 # SimpleTodo
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=yogendrasai02.SimpleTodo&left_color=green&right_color=red)
 <br>
-- A todo application developed using VanillaJS and Firebase.
+- A todo application developed using JavaScript and Firebase.
 - Web app Deployed on Netlify: [Simple todo](https://simple-todo-2022.netlify.app/)
 
 ## Technologies used
