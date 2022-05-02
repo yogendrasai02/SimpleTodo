@@ -5,7 +5,7 @@
 - Web app Deployed on Netlify: [Simple todo](https://simple-todo-2022.netlify.app/)
 
 ## Technologies used
-[![My Skills](https://skillicons.dev/icons?i=js,firebase,html,css,bootstrap)](https://skillicons.dev)
+[![Tech used](https://skillicons.dev/icons?i=js,firebase,html,css,bootstrap)](https://skillicons.dev)
 - JavaScript
 - Firebase Authentication and Firebase Firestore (Firebase V9)
 - HTML5, CSS3, Bootstrap 5.0
