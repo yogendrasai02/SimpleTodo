@@ -4,6 +4,8 @@
 - A todo application developed using JavaScript and Firebase.
 - Web app Deployed on Netlify: [Simple todo](https://simple-todo-2022.netlify.app/)
 
+> **NOTE:** I have used FontAwesome Icons here. Later, I have deleted the existing kit. So, the icons will not render now. I will migrate to some other icon providers soon.
+
 ## Technologies used
 [![Tech used](https://skillicons.dev/icons?i=js,firebase,html,css,bootstrap)](https://skillicons.dev)
 - JavaScript
